@@ -1,0 +1,40 @@
+.tooltip {
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+
+    &__target {
+        display: inline-block;
+        cursor: pointer;
+
+        &:hover~.tooltip__text {
+            width: auto;
+            height: auto;
+            left: 50%;
+            bottom: calc(-50% - 21px);
+            transform: translateX(-50%);
+            visibility: visible;
+            background-color: rgba(0, 0, 0, 0.87);
+            transition: background-color .25s;
+        }
+    }
+
+    &__text {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 0;
+        height: 0;
+        padding: 3px 16px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        visibility: hidden;
+        border-radius: 4px;
+        font-size: 16px;
+        line-height: 26px;
+        color: #ffff;
+        transition: background-color .25s;
+    }
+}

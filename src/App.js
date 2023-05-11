@@ -2,7 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import 'ScssRoot/main.scss';
 
-import { ClassicButton, ClassicInput, FileUploader, RadioButton } from 'ComponentsRoot';
+import { ClassicButton, ClassicInput, FileUploader, RadioButton, Tooltip } from 'ComponentsRoot';
+
 
 function App() {
   return (
@@ -27,6 +28,11 @@ function App() {
       <ClassicInput />
       <FileUploader/>
       <RadioButton/>
+
+
+      <Tooltip text='some text'>
+        <FileUploader/>
+      </Tooltip>
     </>
 
   );
