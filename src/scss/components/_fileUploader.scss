@@ -1,0 +1,53 @@
+.fileUploader {
+    display: flex;
+    width: 328px;
+    height: 54px;
+    justify-content: center;
+    align-items: center;
+
+    &__input {
+        width: 0px;
+        height: 0px;
+        visibility:hidden;
+    }
+
+    &__label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 83px;
+        height: 100%;
+        padding: 14px 15px;
+        font-size: 16px;
+        line-height: 26px;
+        border: 1px solid rgba(0, 0, 0, 0.87);
+        border-radius: 4px 0px 0px 4px;
+        cursor: pointer;
+
+        &_error {
+            border: 2px solid $error;
+        }
+    }
+
+    &__file-chosen {
+        width: calc(100% - 83px);
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid $inputBorder;
+        border-left: none;
+        border-radius: 0px 4px 4px 0px;
+        font-size: 16px;
+        line-height: 26px;
+        color: $labelText;
+
+        &_chosen {
+            color: rgba(0, 0, 0, 0.87);
+        }
+        &_error {
+            border: 2px solid $error;
+            border-left: none;
+        }
+    }
+}

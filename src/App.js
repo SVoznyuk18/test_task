@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import 'ScssRoot/main.scss';
 
-import { ClassicButton, ClassicInput } from 'ComponentsRoot';
+import { ClassicButton, ClassicInput, FileUploader } from 'ComponentsRoot';
 
 function App() {
   return (
@@ -25,6 +25,7 @@ function App() {
     <>
       <ClassicButton>Users</ClassicButton>
       <ClassicInput />
+      <FileUploader/>
     </>
 
   );
