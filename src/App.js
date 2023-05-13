@@ -1,9 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import 'ScssRoot/main.scss';
+import React from "react";
+import logo from "./logo.svg";
+import "ScssRoot/main.scss";
 
-import { ClassicButton, ClassicInput, FileUploader, RadioButton, Tooltip } from 'ComponentsRoot';
-
+import {
+  ClassicButton,
+  ClassicInput,
+  FileUploader,
+  RadioButton,
+  Tooltip,
+  Header,
+} from "ComponentsRoot";
 
 function App() {
   return (
@@ -24,7 +30,7 @@ function App() {
     //   </header>
     // </div>
     <>
-      <ClassicButton>Users</ClassicButton>
+      {/* <ClassicButton>Users</ClassicButton>
       <ClassicInput />
       <FileUploader/>
       <RadioButton/>
@@ -32,9 +38,9 @@ function App() {
 
       <Tooltip text='some text'>
         <FileUploader/>
-      </Tooltip>
+      </Tooltip> */}
+      <Header />
     </>
-
   );
 }
 

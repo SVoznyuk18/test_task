@@ -1,0 +1,40 @@
+.header {
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 16px;
+
+    &__logo {
+        width: 91px;
+        height: 26px;
+        margin-right: 14px;
+    }
+
+    &__buttonsSection {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: $mobile) {
+    .header {
+        padding: 13px 32px;
+    }
+    
+}
+@media screen and (min-width: $tablet) {
+    .header {
+        padding: 13px 60px;
+    }
+    
+}
+
+@media screen and (min-width: $desktop) {
+    .header {
+        max-width: 1170px;
+        padding: 13px 0px;
+    }
+    
+}
