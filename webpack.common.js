@@ -1,33 +1,36 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const devMode = process.env.NODE_ENV !== 'production'
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
   resolve: {
     alias: {
-      ActionsRoot: path.resolve(__dirname, './src/actions'),
-      ConfigsRoot: path.resolve(__dirname, './src/configs'),
-      ComponentsRoot: path.resolve(__dirname, './src/components'),
-      AssetsRoot: path.resolve(__dirname, './src/assets'),
-      UtilsRoot: path.resolve(__dirname, './src/utils'),
-      ScssRoot: path.resolve(__dirname, './src/scss')
+      ActionsRoot: path.resolve(__dirname, "./src/actions"),
+      ConfigsRoot: path.resolve(__dirname, "./src/configs"),
+      ComponentsRoot: path.resolve(__dirname, "./src/components"),
+      AssetsRoot: path.resolve(__dirname, "./src/assets"),
+      UtilsRoot: path.resolve(__dirname, "./src/utils"),
+      ScssRoot: path.resolve(__dirname, "./src/scss"),
     },
-    extensions: ['.js', '.jsx', '.json']
+    extensions: [".js", ".jsx", ".json"],
   },
   entry: ["@babel/polyfill", "./src/index.js"],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "[name].js",
+    chunkFilename: "[id].[chunkhash].js",
   },
   devServer: {
     historyApiFallback: true,
-
   },
   plugins: [
-    new HTMLWebpackPlugin({ template: "./public/index.html", favicon: './public/favicon.ico' }),
-    new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' })
+    new HTMLWebpackPlugin({
+      template: "./public/index.html",
+      favicon: "./public/favicon.ico",
+    }),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
   ],
   module: {
     rules: [
@@ -35,54 +38,50 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
+            presets: [["@babel/preset-env", { targets: "defaults" }]],
+          },
+        },
       },
       {
         test: /\.m?jsx$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [
-              ["@babel/preset-react", '@babel/preset-env']
-            ]
-          }
-        }
+            presets: [["@babel/preset-react", "@babel/preset-env"]],
+          },
+        },
       },
       {
         test: /\.(c|sa|sc)ss$/i,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-         "css-loader",
+          devMode ? "style-loader" : MiniCssExtractPlugin.loader,
+          "css-loader",
           {
-            loader: 'postcss-loader',
+            loader: "postcss-loader",
             options: {
               postcssOptions: {
-                plugins: [require('postcss-preset-env')]
-              }
-            }
+                plugins: [require("postcss-preset-env")],
+              },
+            },
           },
           "sass-loader",
         ],
       },
       {
         test: /\.woff|woff2|eot|ttf?$/i,
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'fonts/[name][ext]'
-        }
+          filename: "fonts/[name][ext]",
+        },
       },
       {
         test: /\.(jpe?g|png|webp|gif|svg)$/i,
         use: [
           {
-            loader: 'image-webpack-loader',
+            loader: "image-webpack-loader",
             options: {
               mozjpeg: {
                 progressive: true,
@@ -91,23 +90,23 @@ module.exports = {
                 enabled: false,
               },
               pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
+                quality: [0.65, 0.9],
+                speed: 4,
               },
               gifsicle: {
                 interlaced: false,
               },
               webp: {
-                quality: 75
-              }
-            }
+                quality: 75,
+              },
+            },
           },
         ],
-        type: 'asset/resource',
+        type: "asset/resource",
         generator: {
-          filename: 'img/[name][ext]'
-        }
-      }
-    ]
-  }
+          filename: "img/[name][ext]",
+        },
+      },
+    ],
+  },
 };

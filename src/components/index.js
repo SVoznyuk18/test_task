@@ -4,6 +4,7 @@ import FileUploader from "./FileUploader/FileUploader";
 import RadioButton from "./RadioButton/RadioButton";
 import Tooltip from "./Tooltip/Tooltip";
 import Header from "./Header/Header";
+import Promo from "./Promo/Promo";
 
 export {
   ClassicButton,
@@ -12,4 +13,5 @@ export {
   RadioButton,
   Tooltip,
   Header,
+  Promo,
 };
