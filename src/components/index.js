@@ -5,6 +5,8 @@ import RadioButton from "./RadioButton/RadioButton";
 import Tooltip from "./Tooltip/Tooltip";
 import Header from "./Header/Header";
 import Promo from "./Promo/Promo";
+import UserCard from "./UserCard/UserCard";
+import Users from "./Users/Users";
 
 export {
   ClassicButton,
@@ -14,4 +16,6 @@ export {
   Tooltip,
   Header,
   Promo,
+  UserCard,
+  Users,
 };

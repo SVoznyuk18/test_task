@@ -9,6 +9,7 @@ import {
   Tooltip,
   Header,
   Promo,
+  Users,
 } from "ComponentsRoot";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
     <>
       <Header />
       <Promo />
+      <Users />
     </>
   );
 }
