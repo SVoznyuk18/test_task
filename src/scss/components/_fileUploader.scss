@@ -1,9 +1,16 @@
 .fileUploader {
+    width: 100%;
     display: flex;
-    width: 328px;
-    height: 54px;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    .container {
+        display: flex;
+        width: 100%;
+        height: 54px;
+        justify-content: center;
+        align-items: center;   
+    }
 
     &__input {
         width: 0px;
@@ -30,10 +37,11 @@
     }
 
     &__file-chosen {
+        padding: 14px 16px;
         width: calc(100% - 83px);
         height: 100%;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         border: 1px solid $inputBorder;
         border-left: none;
@@ -49,5 +57,11 @@
             border: 2px solid $error;
             border-left: none;
         }
+    }
+}
+
+@media screen and (min-width: $mobile) {
+    .fileUploader {
+        max-width: 380px;
     }
 }

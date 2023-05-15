@@ -32,7 +32,7 @@ const Form = () => {
           id="Your name"
           name="yourName"
           register={register}
-          validation=""
+          validation={{}}
           // helperText=''
           errorMessage={errors?.yourName && errors?.yourName?.message}
         />
@@ -42,7 +42,7 @@ const Form = () => {
           id="email"
           name="email"
           register={register}
-          validation=""
+          validation={{}}
           // helperText=''
           errorMessage={errors?.email && errors?.email?.message}
         />
@@ -52,16 +52,27 @@ const Form = () => {
           id="phone"
           name="phone"
           register={register}
-          validation=""
+          validation={{}}
           helperText="+38 (XXX) XXX - XX - XX"
           errorMessage={errors?.phone && errors?.phone?.message}
         />
-        <p className="form__radioButtons-title">Select your position</p>
-        <RadioButton />
-        <RadioButton />
-        <RadioButton />
-        <FileUploader />
-        <ClassicButton type="submit" />
+        <RadioButton
+          title="Select your position"
+          radioItems={[]}
+          name="position_id"
+          register={register}
+        />
+        <FileUploader
+          accept="image/*, .jpeg, .jpg"
+          size={5 * 1024 * 1024}
+          id="photo"
+          name="photo"
+          htmlFor="photo"
+          register={register}
+          placeholder="Upload your photo"
+          errorMessage={errors?.avatarUrl && errors?.avatarUrl?.message}
+        />
+        <ClassicButton type="submit">Sign up</ClassicButton>
       </form>
     </section>
   );
