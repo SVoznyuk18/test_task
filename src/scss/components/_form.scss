@@ -1,0 +1,55 @@
+
+.formSection {
+    margin: 0 auto;
+    padding: 140px 16px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: $bgColor;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        &__title {
+            text-align: center;
+            font-weight: 400;
+            font-size: 40px;
+            line-height: 40px;
+            margin-bottom: 50px;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: $tablet) {
+    .formSection {
+        padding: 140px 32px 100px;
+
+     
+    }
+}
+
+@media screen and (min-width: $tabletL) {
+    .formSection {
+        padding: 140px 60px 100px;
+    
+    }
+}
+
+@media screen and (min-width: $desktopL) {
+    .formSection {
+        padding: 140px 0px 100px;
+     
+    }
+}

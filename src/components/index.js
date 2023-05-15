@@ -7,6 +7,7 @@ import Header from "./Header/Header";
 import Promo from "./Promo/Promo";
 import UserCard from "./UserCard/UserCard";
 import Users from "./Users/Users";
+import Form from "./Form/Form";
 
 export {
   ClassicButton,
@@ -18,4 +19,5 @@ export {
   Promo,
   UserCard,
   Users,
+  Form,
 };

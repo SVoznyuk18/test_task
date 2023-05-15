@@ -1,9 +1,9 @@
 .input_wrapper {
     position: relative;
     border: none;
-    width: 328px;
+    width: 100%;
     height: 54px;
-    margin-top: 20px;
+    margin-bottom: 50px;
 
     .label {
         position: absolute;
@@ -41,5 +41,11 @@
         &_error {
             border: 2px solid $error;
         }
+    }
+}
+
+@media screen and (min-width: $mobile) {
+    .input_wrapper {
+        max-width: 380px;
     }
 }

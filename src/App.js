@@ -10,6 +10,7 @@ import {
   Header,
   Promo,
   Users,
+  Form,
 } from "ComponentsRoot";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <Header />
       <Promo />
       <Users />
+      <Form />
     </>
   );
 }
