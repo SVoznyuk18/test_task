@@ -1,0 +1,15 @@
+.helper {
+    margin: 3px 0px 0px 16px;
+
+    &__label {
+
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: $text;
+
+        &_error {
+            color: $error;
+        }
+    }
+}

@@ -9,9 +9,6 @@ export const ClassicButton = ({ children, style, type }) => {
   );
 };
 
-// button_type_disabled
-// button_size_s
-// button_size_m
 ClassicButton.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
   style: PropTypes.object,

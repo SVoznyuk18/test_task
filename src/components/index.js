@@ -8,6 +8,7 @@ import Promo from "./Promo/Promo";
 import UserCard from "./UserCard/UserCard";
 import Users from "./Users/Users";
 import Form from "./Form/Form";
+import HelperMessage from './HelperMessage/HelperMessage';
 
 export {
   ClassicButton,
@@ -20,4 +21,5 @@ export {
   UserCard,
   Users,
   Form,
+  HelperMessage
 };
