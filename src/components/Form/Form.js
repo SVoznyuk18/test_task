@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 import {
   ClassicButton,
@@ -9,6 +10,9 @@ import {
 } from "ComponentsRoot";
 
 const Form = () => {
+
+  const {positions} = useSelector(state => state.positions);
+
   const {
     register,
     handleSubmit,
@@ -33,6 +37,7 @@ const Form = () => {
           name="yourName"
           register={register}
           validation={{}}
+          onCh
           // helperText=''
           errorMessage={errors?.yourName && errors?.yourName?.message}
         />
@@ -58,7 +63,7 @@ const Form = () => {
         />
         <RadioButton
           title="Select your position"
-          radioItems={[]}
+          radioItems={positions}
           name="position_id"
           register={register}
         />

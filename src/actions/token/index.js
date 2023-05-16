@@ -1,1 +1,1 @@
-import * as Types from "ConstantsRoot";
+import * as Types from "ConfigsRoot/constants";

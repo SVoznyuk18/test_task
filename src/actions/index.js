@@ -1,5 +1,5 @@
-import {} from "./positions";
+import {getPositions} from "./positions";
 import {} from "./token";
 import {} from "./users";
 
-export {};
+export {getPositions};

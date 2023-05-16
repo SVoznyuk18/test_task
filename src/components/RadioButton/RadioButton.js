@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 
 const RadioButton = ({ title, radioItems, name, register }) => {
@@ -6,39 +6,25 @@ const RadioButton = ({ title, radioItems, name, register }) => {
     <div className="radio">
       <div className="radio__title">{title}</div>
       <ul className="radio__group">
-        <li className="radio__group__item">
-          <input
-            type="radio"
-            id="Frontend developer"
-            name={name}
-            value="Frontend developer"
-            className="radio__group__item__input"
-            {...register(name)}
-          />
-          <label
-            htmlFor="Frontend developer"
-            className="radio__group__item__label"
-          >
-            Frontend developer
-          </label>
-          <div className="radio__group__item__check"></div>
-        </li>
-        <li className="radio__group__item">
-          <input
-            type="radio"
-            id="Backend developer"
-            name="position"
-            value="Backend developer"
-            className="radio__group__item__input"
-          />
-          <label
-            htmlFor="Backend developer"
-            className="radio__group__item__label"
-          >
-            Backend developer
-          </label>
-          <div className="radio__group__item__check"></div>
-        </li>
+        {radioItems?.length > 0 && radioItems.map(redioItem => (
+           <li key={redioItem?.id} className="radio__group__item">
+           <input
+             type="radio"
+             id={redioItem?.name}
+             name={name}
+             value={redioItem?.name}
+             className="radio__group__item__input"
+             {...register(name)}
+           />
+           <label
+             htmlFor={redioItem?.name}
+             className="radio__group__item__label"
+           >
+             {redioItem?.name}
+           </label>
+           <div className="radio__group__item__check"></div>
+         </li>
+        ))}
       </ul>
     </div>
   );
@@ -58,4 +44,4 @@ RadioButton.defaultProps = {
   register: () => {},
 };
 
-export default RadioButton;
+export default memo(RadioButton);

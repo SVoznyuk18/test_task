@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useEffect} from "react";
+import { useDispatch } from "react-redux";
 import "ScssRoot/main.scss";
 
 import {
@@ -13,7 +14,16 @@ import {
   Form,
 } from "ComponentsRoot";
 
+import {getPositions} from "ActionsRoot";
+
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getPositions());
+  }, []);
+
   return (
     <>
       <Header />
