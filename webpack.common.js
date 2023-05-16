@@ -11,7 +11,7 @@ module.exports = {
       ConfigsRoot: path.resolve(__dirname, "./src/configs"),
       ComponentsRoot: path.resolve(__dirname, "./src/components"),
       AssetsRoot: path.resolve(__dirname, "./src/assets"),
-      UtilsRoot: path.resolve(__dirname, "./src/utils"),
+      ApisRoot: path.resolve(__dirname, "./src/api"),
       ScssRoot: path.resolve(__dirname, "./src/scss"),
     },
     extensions: [".js", ".jsx", ".json"],

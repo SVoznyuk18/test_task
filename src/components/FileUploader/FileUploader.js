@@ -34,18 +34,18 @@ const FileUploader = ({
         <label
           htmlFor={htmlFor}
           className={`
-                            fileUploader__label 
-                            ${true && "fileUploader__label_error"}
-                        `}
+              fileUploader__label 
+              ${true && "fileUploader__label_error"}
+            `}
         >
           Upload
         </label>
         <span
           className={`
-                            fileUploader__file-chosen 
-                            ${choseFile && "fileUploader__file-chosen_chosen"} 
-                            ${true && "fileUploader__file-chosen_error"}
-                        `}
+            fileUploader__file-chosen 
+            ${choseFile && "fileUploader__file-chosen_chosen"} 
+            ${true && "fileUploader__file-chosen_error"}
+        `}
         >
           {choseFile || placeholder}
         </span>
