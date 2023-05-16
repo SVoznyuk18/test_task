@@ -4,7 +4,7 @@ import * as Types from "ConfigsRoot/constants";
 
 import {getPositionApiRequest} from 'ApiRoot'
 
-function* workPositions() {
+function* workGetPositions() {
     try {
         const positions = yield call(getPositionApiRequest);
         yield put({type: Types.GET_POSITIONS_SUCCESS, payload: positions?.data})
@@ -14,6 +14,6 @@ function* workPositions() {
 }
 
 export default function* watchPositions() {
-    yield takeLatest(Types.GET_POSITIONS, workPositions);
+    yield takeLatest(Types.GET_POSITIONS, workGetPositions);
 
 }

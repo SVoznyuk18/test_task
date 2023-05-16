@@ -1,65 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { ClassicButton, UserCard } from "ComponentsRoot";
+import {getOffsetUsers} from "ActionsRoot";
 
 const Users = ({}) => {
-  const users = [
-    {
-      id: "30",
-      name: "Angel",
-      email: "angel.williams@example.com",
-      phone: "+380496540023",
-      position: "Designer",
-      position_id: "4",
-      registration_timestamp: 1537777441,
-      photo:
-        "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba13fb3330.jpeg",
-    },
-    {
-      id: "29",
-      name: "Mattie",
-      email: "mattie.lee@example.com",
-      phone: "+380204819073",
-      position: "Designer",
-      position_id: "4",
-      registration_timestamp: 1537691099,
-      photo:
-        "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba1245cc29.jpeg",
-    },
-    {
-      id: "36",
-      name: "Joshua",
-      email: "joshua.dean@example.com",
-      phone: "+380542161925",
-      position: "Designer",
-      position_id: "4",
-      registration_timestamp: 1537661281,
-      photo:
-        "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba1e527036.jpeg",
-    },
-    {
-      id: "37",
-      name: "Lisa",
-      email: "lisa.medina@example.com",
-      phone: "+380564753087",
-      position: "Security",
-      position_id: "3",
-      registration_timestamp: 1537639019,
-      photo:
-        "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba20bd9537.jpeg",
-    },
-    {
-      id: "42",
-      name: "Lorraine",
-      email: "lorraine.morris@example.com",
-      phone: "+380945198009",
-      position: "Designer",
-      position_id: "4",
-      registration_timestamp: 1537629182,
-      photo:
-        "https://frontend-test-assignment-api.abz.agency/images/users/5b977ba293d2f42.jpeg",
-    },
-  ];
+
+  const [page, setPage] = useState(1);
+  const dispatch = useDispatch();
+  const {totalPages} = useSelector(state => state.users); 
+  const {users} = useSelector(state => state.users); 
+
+  useEffect(() => {
+    if(page > 1) {
+      dispatch(getOffsetUsers({page}))
+    }
+  }, [page])
 
   return (
     <section className="users">
@@ -68,7 +24,7 @@ const Users = ({}) => {
         {users.length > 0 &&
           users.map((user) => <UserCard key={user?.id} user={user} />)}
       </div>
-      <ClassicButton>Show more</ClassicButton>
+      <ClassicButton onClick={() => setPage(page + 1)} disabled={page === totalPages}>Show more</ClassicButton>
     </section>
   );
 };

@@ -3,18 +3,13 @@ import { useDispatch } from "react-redux";
 import "ScssRoot/main.scss";
 
 import {
-  ClassicButton,
-  ClassicInput,
-  FileUploader,
-  RadioButton,
-  Tooltip,
   Header,
   Promo,
   Users,
   Form,
 } from "ComponentsRoot";
 
-import {getPositions} from "ActionsRoot";
+import {getPositions, getUsers} from "ActionsRoot";
 
 function App() {
 
@@ -22,6 +17,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getPositions());
+    dispatch(getUsers());
   }, []);
 
   return (

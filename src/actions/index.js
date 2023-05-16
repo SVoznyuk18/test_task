@@ -1,5 +1,5 @@
 import {getPositions} from "./positions";
 import {} from "./token";
-import {} from "./users";
+import {getUsers, getOffsetUsers} from "./users";
 
-export {getPositions};
+export {getPositions, getUsers, getOffsetUsers};
