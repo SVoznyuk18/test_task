@@ -9,7 +9,7 @@ import {
   Form,
 } from "ComponentsRoot";
 
-import {getPositions, getUsers} from "ActionsRoot";
+import {getPositions, getUsers, getToken} from "ActionsRoot";
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(getPositions());
     dispatch(getUsers());
+    dispatch(getToken());
   }, []);
 
   return (

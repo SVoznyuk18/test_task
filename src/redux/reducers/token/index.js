@@ -1,15 +1,21 @@
 import * as Types from "ConfigsRoot/constants";
 
 const initialState = {
-  cart: [],
-  totalPrice: 0,
-  totalAmount: 0,
+  token: '',
 };
+
+const getTokenSucess = (state, action) => {
+  const {token} = action.payload;
+  return {
+    ...state,
+    token
+  }
+}
 
 const token = (state = initialState, action) => {
   switch (action.type) {
-    // case Types.GET_CURRENT_ORDER_SUCCESS:
-    //     return getCurrentOrderSuccess(state, action)
+    case Types.GET_TOKEN_SUCCESS:
+        return getTokenSucess(state, action)
     default:
       return state;
   }
