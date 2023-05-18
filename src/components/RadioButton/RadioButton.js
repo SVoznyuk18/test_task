@@ -7,7 +7,7 @@ const RadioButton = ({ title, radioItems, name, register }) => {
 
   return (
     <div className="radio">
-      <div className="rado__title">{title}</div>
+      <div className="radio__title">{title}</div>
       <ul className="radio__group">
         {radioItems?.length > 0 && radioItems.map(radioItem => (
            <li key={radioItem?.id} className="radio__group__item">
@@ -41,7 +41,6 @@ RadioButton.propTypes = {
   name: PropTypes.string,
   register: PropTypes.func,
   setValue: PropTypes.func,
-
 };
 
 RadioButton.defaultProps = {

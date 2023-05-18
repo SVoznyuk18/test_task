@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
-
 import {
   ClassicButton,
   ClassicInput,
@@ -49,7 +48,8 @@ const Form = () => {
     clearErrors,
     setValue,
     reset, 
-  } = useForm({ resolver: yupResolver(schema)});
+    getValues
+  } = useForm({ resolver: yupResolver(schema), mode: 'all'});
 
   const onSubmit = (data) => {
     console.log(data);
@@ -69,6 +69,7 @@ const Form = () => {
           type="text"
           register={register}
           errorMessage={errors?.yourName && errors?.yourName?.message}
+          getValues={getValues}
         />
         <ClassicInput
           htmlFor="email"
@@ -78,6 +79,7 @@ const Form = () => {
           type="email"
           register={register}
           errorMessage={errors?.email && errors?.email?.message}
+          getValues={getValues}
         />
         <ClassicInput
           htmlFor="phone"
@@ -88,6 +90,7 @@ const Form = () => {
           register={register}
           helperText="+38 (XXX) XXX - XX - XX"
           errorMessage={errors?.phone && errors?.phone?.message}
+          getValues={getValues}
         />
         <RadioButton
           title="Select your position"
@@ -111,7 +114,7 @@ const Form = () => {
           choseFile={choseFile}
           cbChoseFile={setChoseFile}
         />
-        <ClassicButton type="submit" disabled={Object.keys(errors).length > 0 }>Sign up</ClassicButton>
+        <ClassicButton type="submit" disabled={Object.keys(errors).length > 0}>Sign up</ClassicButton>
       </form>
     </section>
   );

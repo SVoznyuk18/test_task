@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 
 import { HelperMessage } from "ComponentsRoot";
@@ -111,4 +111,4 @@ FileUploader.defaultProps = {
   cbChoseFile: () => {},
 };
 
-export default FileUploader;
+export default memo(FileUploader);

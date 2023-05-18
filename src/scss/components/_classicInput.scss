@@ -13,6 +13,20 @@
         font-size: 16px;
         transition: all 0.3s;
         color: $text;
+
+        &_dirtyField{
+            transition: all 0.3s;
+            color: $text;
+            transform: translate(16px, -235%);
+            font-size: 12px;
+            padding: 0 4px;
+            background-color: $bgColor;
+
+        }
+        
+        &_error {
+            color: $error;
+        }
     }
 
     .input {
