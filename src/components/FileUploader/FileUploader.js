@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 import { HelperMessage } from "ComponentsRoot";
@@ -6,18 +6,41 @@ import { HelperMessage } from "ComponentsRoot";
 const FileUploader = ({
   htmlFor,
   accept,
-  size,
+  defaultImgSize,
   id,
   name,
   register,
   placeholder,
   errorMessage,
+  setValue,
+  clearErrors,
+  cbWidth,
+  cbHeight,
+  cbChoseFile,
+  choseFile
 }) => {
-  const [choseFile, setChoseFile] = useState("");
-
+  
   const handleChangeFileName = (e) => {
-    setChoseFile(e.target.files[0].name);
+    cbChoseFile(e.target.files[0]);
+    getImgResolution(e, cbWidth, cbHeight);
+    setValue(name, e.target.files[0]);
+    clearErrors(name);
   };
+
+  const getImgResolution = (file, cbWidth, cbHeight) => {
+    let reader = new FileReader();
+
+    reader.onload = function(event) {
+      let img = new Image();
+
+      img.onload = function() {
+        cbWidth(this.width);
+        cbHeight(this.height)
+      };
+      img.src = event.target.result;
+    };
+    reader.readAsDataURL(file.target.files[0]);
+  }
 
   return (
     <div className="fileUploader">
@@ -28,14 +51,15 @@ const FileUploader = ({
           accept={accept}
           id={id}
           name={name}
-          size={size}
+          size={defaultImgSize}
+          {...register(name)}
           onChange={handleChangeFileName}
         />
         <label
           htmlFor={htmlFor}
           className={`
               fileUploader__label 
-              ${true && "fileUploader__label_error"}
+              ${errorMessage && "fileUploader__label_error"}
             `}
         >
           Upload
@@ -43,11 +67,11 @@ const FileUploader = ({
         <span
           className={`
             fileUploader__file-chosen 
-            ${choseFile && "fileUploader__file-chosen_chosen"} 
-            ${true && "fileUploader__file-chosen_error"}
+            ${choseFile?.name && "fileUploader__file-chosen_chosen"} 
+            ${errorMessage && "fileUploader__file-chosen_error"}
         `}
         >
-          {choseFile || placeholder}
+          {choseFile?.name || placeholder}
         </span>
       </div>
       <HelperMessage error={errorMessage} />
@@ -58,23 +82,33 @@ const FileUploader = ({
 FileUploader.propTypes = {
   photo: PropTypes.string,
   accept: PropTypes.string,
-  size: PropTypes.number,
+  defaultImgSize: PropTypes.number,
   id: PropTypes.string,
   name: PropTypes.string,
   register: PropTypes.func,
   placeholder: PropTypes.string,
   errorMessage: PropTypes.string,
+  setValue: PropTypes.func,
+  clearErrors: PropTypes.func,
+  cbWidth: PropTypes.func,
+  cbHeight: PropTypes.func,
+  cbChoseFile: PropTypes.func
 };
 
 FileUploader.defaultProps = {
   htmlFor: "",
   accept: "image/*, .jpeg, .jpg",
-  size: 0,
+  defaultImgSize: 0,
   id: "",
   name: "",
   register: () => {},
   placeholder: "",
-  errorMessage: "error",
+  errorMessage: "",
+  setValue: () => {},
+  clearErrors: () => {},
+  cbWidth: () => {},
+  cbHeight: () => {},
+  cbChoseFile: () => {},
 };
 
 export default FileUploader;

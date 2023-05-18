@@ -13,6 +13,7 @@ module.exports = {
       AssetsRoot: path.resolve(__dirname, "./src/assets"),
       ApiRoot: path.resolve(__dirname, "./src/api"),
       ScssRoot: path.resolve(__dirname, "./src/scss"),
+      UtilsRoot: path.resolve(__dirname, "./src/utils")
     },
     extensions: [".js", ".jsx", ".json"],
   },

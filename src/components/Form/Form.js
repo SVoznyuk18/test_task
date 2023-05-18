@@ -1,6 +1,9 @@
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
 
 import {
   ClassicButton,
@@ -9,21 +12,49 @@ import {
   RadioButton,
 } from "ComponentsRoot";
 
+import {regExpEmail, regExpPhone} from "UtilsRoot";
+
 const Form = () => {
+  const [imgWidth, setImgWidth] = useState(0);
+  const [imgHeight, setImgHeight] = useState(0);
+  const [choseFile, setChoseFile] = useState(null);
+
+  const schema = yup.object({
+    yourName: yup.string()
+              .required('Required field')
+              .min(2, 'Must be more than 2 characters')
+              .max(60, 'Must be less than 60 characters'),
+    email: yup.string()
+              .required('Required field')
+              .min(2,' Must be more than 2 characters')
+              .max(100, 'Must be less than 100 characters')
+              .matches(regExpEmail, 'User email, must be a valid email according to RFC2822'),
+    phone: yup.string()
+              .required('Required field')
+              .matches(regExpPhone, 'Number should start with code of Ukraine +380'),
+    position_id: yup.number()
+              .required('Required field'),
+    photo: yup.mixed()
+              .test('Required', 'Required field', value => value && value.length !== 0)
+              .test('isValid resolution', 'Minimum size of photo 70x70px', value => value && (imgWidth > 70 || imgHeight > 70))
+              .test('isValid size', 'The photo size must not be greater than 5 Mb', value => value && (value.size < 5242880))
+  })
 
   const {positions} = useSelector(state => state.positions);
 
   const {
     register,
     handleSubmit,
-    control,
-    formState: { errors, dirtyFields },
-    reset,
-  } = useForm({ mode: "all" });
+    formState: { errors },
+    clearErrors,
+    setValue,
+    reset, 
+  } = useForm({ resolver: yupResolver(schema)});
 
   const onSubmit = (data) => {
     console.log(data);
     reset();
+    setChoseFile(null);
   };
 
   return (
@@ -35,10 +66,8 @@ const Form = () => {
           label="Your name"
           id="Your name"
           name="yourName"
+          type="text"
           register={register}
-          validation={{}}
-          onCh
-          // helperText=''
           errorMessage={errors?.yourName && errors?.yourName?.message}
         />
         <ClassicInput
@@ -46,9 +75,8 @@ const Form = () => {
           label="Email"
           id="email"
           name="email"
+          type="email"
           register={register}
-          validation={{}}
-          // helperText=''
           errorMessage={errors?.email && errors?.email?.message}
         />
         <ClassicInput
@@ -56,8 +84,8 @@ const Form = () => {
           label="Phone"
           id="phone"
           name="phone"
+          type="text"
           register={register}
-          validation={{}}
           helperText="+38 (XXX) XXX - XX - XX"
           errorMessage={errors?.phone && errors?.phone?.message}
         />
@@ -69,15 +97,21 @@ const Form = () => {
         />
         <FileUploader
           accept="image/*, .jpeg, .jpg"
-          size={5 * 1024 * 1024}
+          defaultImgSize={5 * 1024 * 1024}
           id="photo"
           name="photo"
           htmlFor="photo"
           register={register}
           placeholder="Upload your photo"
-          errorMessage={errors?.avatarUrl && errors?.avatarUrl?.message}
+          setValue={setValue}
+          cbWidth={setImgWidth}
+          cbHeight={setImgHeight}
+          clearErrors={clearErrors}
+          errorMessage={errors?.photo && errors?.photo?.message}
+          choseFile={choseFile}
+          cbChoseFile={setChoseFile}
         />
-        <ClassicButton type="submit">Sign up</ClassicButton>
+        <ClassicButton type="submit" disabled={Object.keys(errors).length > 0 }>Sign up</ClassicButton>
       </form>
     </section>
   );

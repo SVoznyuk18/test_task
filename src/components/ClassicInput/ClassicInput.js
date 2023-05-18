@@ -8,6 +8,7 @@ const ClassicInput = ({
   htmlFor,
   id,
   name,
+  type,
   register,
   validation,
   helperText,
@@ -17,10 +18,10 @@ const ClassicInput = ({
     <div className="input_wrapper">
       <input
         className="input input_error"
-        type="text"
+        type={type}
         id={id}
         name={name}
-        {...register(name, validation)}
+        {...register(name)}
       />
       <label htmlFor={htmlFor} className="label label_error">
         {label}
@@ -34,6 +35,8 @@ ClassicInput.propTypes = {
   label: PropTypes.string,
   htmlFor: PropTypes.string,
   id: PropTypes.string,
+  name: PropTypes.string,
+  typr: PropTypes.string,
   register: PropTypes.func,
   validation: PropTypes.object,
   helperText: PropTypes.string,
@@ -44,6 +47,8 @@ ClassicInput.defaultProps = {
   label: "",
   htmlFor: "",
   id: "",
+  name: '',
+  type: 'text',
   register: () => {},
   validation: {},
   helperText: "",
