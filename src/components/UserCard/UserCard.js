@@ -7,7 +7,7 @@ import { Tooltip } from "ComponentsRoot";
 const UserCard = ({ user }) => {
   return (
     <article className="userCard">
-      <img className="userCard__img" src={user?.photo || defaultPhoto} />
+      <img className="userCard__img"  src={user?.photo || defaultPhoto} alt='userImg' loading="lazy" />
       <div className="userCard__name">
         <Tooltip text={user?.name}>{user?.name}</Tooltip>
       </div>
