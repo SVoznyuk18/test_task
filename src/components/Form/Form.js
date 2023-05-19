@@ -9,6 +9,7 @@ import {
   ClassicInput,
   FileUploader,
   RadioButton,
+  Spiner
 } from "ComponentsRoot";
 import {createNewUser} from 'ActionsRoot'
 
@@ -20,6 +21,7 @@ const Form = () => {
   const [choseFile, setChoseFile] = useState(null);
 
   const {positions} = useSelector(state => state.positions);
+  const {userLoading} = useSelector(state => state.users);
   const dispatch = useDispatch();
 
   const schema = yup.object({
@@ -62,64 +64,72 @@ const Form = () => {
 
   return (
     <section className="formSection">
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <h1 className="form__title">Working with POST request</h1>
-        <ClassicInput
-          htmlFor="name"
-          label="Your name"
-          id="name"
-          name="name"
-          type="text"
-          register={register}
-          errorMessage={errors?.name && errors?.name?.message}
-          getValues={getValues}
-        />
-        <ClassicInput
-          htmlFor="email"
-          label="Email"
-          id="email"
-          name="email"
-          type="email"
-          register={register}
-          errorMessage={errors?.email && errors?.email?.message}
-          getValues={getValues}
-        />
-        <ClassicInput
-          htmlFor="phone"
-          label="Phone"
-          id="phone"
-          name="phone"
-          type="text"
-          register={register}
-          helperText="+38 (XXX) XXX - XX - XX"
-          errorMessage={errors?.phone && errors?.phone?.message}
-          getValues={getValues}
-        />
-        <RadioButton
-          title="Select your position"
-          radioItems={positions}
-          name="position_id"
-          register={register}
-          setValue={setValue}
-        />
-        <FileUploader
-          accept="image/jpg, image/jpeg"
-          defaultImgSize={5 * 1024 * 1024}
-          id="photo"
-          name="photo"
-          htmlFor="photo"
-          register={register}
-          placeholder="Upload your photo"
-          setValue={setValue}
-          cbWidth={setImgWidth}
-          cbHeight={setImgHeight}
-          clearErrors={clearErrors}
-          errorMessage={errors?.photo && errors?.photo?.message}
-          choseFile={choseFile}
-          cbChoseFile={setChoseFile}
-        />
-        <ClassicButton type="submit" disabled={Object.keys(errors).length > 0}>Sign up</ClassicButton>
-      </form>
+      <Choose>
+        <When condition={userLoading}>
+          <Spiner/>
+        </When>
+        <Otherwise>
+          <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="form__title">Working with POST request</h1>
+            <ClassicInput
+              htmlFor="name"
+              label="Your name"
+              id="name"
+              name="name"
+              type="text"
+              register={register}
+              errorMessage={errors?.name && errors?.name?.message}
+              getValues={getValues}
+            />
+            <ClassicInput
+              htmlFor="email"
+              label="Email"
+              id="email"
+              name="email"
+              type="email"
+              register={register}
+              errorMessage={errors?.email && errors?.email?.message}
+              getValues={getValues}
+            />
+            <ClassicInput
+              htmlFor="phone"
+              label="Phone"
+              id="phone"
+              name="phone"
+              type="text"
+              register={register}
+              helperText="+38 (XXX) XXX - XX - XX"
+              errorMessage={errors?.phone && errors?.phone?.message}
+              getValues={getValues}
+            />
+            <RadioButton
+              title="Select your position"
+              radioItems={positions}
+              name="position_id"
+              register={register}
+              setValue={setValue}
+            />
+            <FileUploader
+              accept="image/jpg, image/jpeg"
+              defaultImgSize={5 * 1024 * 1024}
+              id="photo"
+              name="photo"
+              htmlFor="photo"
+              register={register}
+              placeholder="Upload your photo"
+              setValue={setValue}
+              cbWidth={setImgWidth}
+              cbHeight={setImgHeight}
+              clearErrors={clearErrors}
+              errorMessage={errors?.photo && errors?.photo?.message}
+              choseFile={choseFile}
+              cbChoseFile={setChoseFile}
+            />
+            <ClassicButton type="submit" disabled={Object.keys(errors).length > 0}>Sign up</ClassicButton>
+          </form>
+        </Otherwise>
+      </Choose>
+     
     </section>
   );
 };
