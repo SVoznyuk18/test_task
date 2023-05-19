@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "ScssRoot/main.scss";
 
 import {
@@ -7,6 +7,7 @@ import {
   Promo,
   Users,
   Form,
+  Success
 } from "ComponentsRoot";
 
 import {getPositions, getUsers, getToken} from "ActionsRoot";
@@ -14,6 +15,7 @@ import {getPositions, getUsers, getToken} from "ActionsRoot";
 function App() {
 
   const dispatch = useDispatch();
+  const {user} = useSelector(state => state.users);
 
   useEffect(() => {
     dispatch(getPositions());
@@ -26,7 +28,9 @@ function App() {
       <Header />
       <Promo />
       <Users />
-      <Form />
+      {
+        user?.success ? <Success/> : <Form />
+      }
     </>
   );
 }

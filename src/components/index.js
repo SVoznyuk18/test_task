@@ -9,6 +9,7 @@ import UserCard from "./UserCard/UserCard";
 import Users from "./Users/Users";
 import Form from "./Form/Form";
 import HelperMessage from './HelperMessage/HelperMessage';
+import Success from './Success/Success';
 
 export {
   ClassicButton,
@@ -21,5 +22,6 @@ export {
   UserCard,
   Users,
   Form,
-  HelperMessage
+  HelperMessage,
+  Success
 };
