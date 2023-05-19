@@ -8,7 +8,6 @@ import {
   Form,
   Success
 } from "ComponentsRoot";
-
 import {getPositions, getUsers, getToken} from "ActionsRoot";
 
 function App() {

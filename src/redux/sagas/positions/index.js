@@ -15,5 +15,4 @@ function* workGetPositions() {
 
 export default function* watchPositions() {
     yield takeLatest(Types.GET_POSITIONS, workGetPositions);
-
 }

@@ -56,7 +56,6 @@ const Form = () => {
   } = useForm({ resolver: yupResolver(schema), mode: 'all'});
 
   const onSubmit = (data) => {
-    console.log(data);
     dispatch(createNewUser(data));
     reset();
     setChoseFile(null);

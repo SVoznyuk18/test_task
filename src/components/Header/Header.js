@@ -6,7 +6,7 @@ import { ClassicButton } from "ComponentsRoot";
 const Header = () => {
   return (
     <header className="header">
-      <img className="header__logo" src={logo} />
+      <img className="header__logo" src={logo} alt='logo_img'/>
       <div className="header__buttonsSection">
         <ClassicButton style={{ marginRight: "10px", width: "100px" }}>
           Users

@@ -10,7 +10,6 @@ const initialState = {
 };
 
 const getUsersSucces = (state, action) => {
-
   const {users, totalPages} = action.payload;
 
   return{
