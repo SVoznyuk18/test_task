@@ -1,4 +1,4 @@
-import { put, call, select, takeLatest } from "redux-saga/effects";
+import { put, call, takeLatest } from "redux-saga/effects";
 
 import * as Types from "ConfigsRoot/constants";
 import {getTokenApiRequest} from 'ApiRoot';

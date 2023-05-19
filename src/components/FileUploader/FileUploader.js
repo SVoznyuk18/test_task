@@ -80,6 +80,7 @@ const FileUploader = ({
 };
 
 FileUploader.propTypes = {
+  htmlFor: PropTypes.string,
   photo: PropTypes.string,
   accept: PropTypes.string,
   defaultImgSize: PropTypes.number,
@@ -92,12 +93,13 @@ FileUploader.propTypes = {
   clearErrors: PropTypes.func,
   cbWidth: PropTypes.func,
   cbHeight: PropTypes.func,
-  cbChoseFile: PropTypes.func
+  cbChoseFile: PropTypes.func,
+  choseFile: PropTypes.object
 };
 
 FileUploader.defaultProps = {
   htmlFor: "",
-  accept: "image/*, .jpeg, .jpg",
+  accept: "image/jpg, image/jpeg",
   defaultImgSize: 0,
   id: "",
   name: "",
@@ -109,6 +111,7 @@ FileUploader.defaultProps = {
   cbWidth: () => {},
   cbHeight: () => {},
   cbChoseFile: () => {},
+  choseFile: {}
 };
 
 export default memo(FileUploader);

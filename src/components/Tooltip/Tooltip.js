@@ -1,4 +1,5 @@
-import React from "react";
+import React, {memo} from "react";
+import PropTypes from "prop-types";
 
 const Tooltip = ({children, text}) => {
     return (
@@ -9,4 +10,9 @@ const Tooltip = ({children, text}) => {
     )
 }
 
-export default Tooltip;
+Tooltip.propTypes = {
+    children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
+    text: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
+  };
+  
+export default memo(Tooltip);

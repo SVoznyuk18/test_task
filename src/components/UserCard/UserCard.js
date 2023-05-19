@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import defaultPhoto from "AssetsRoot/svg/defaultPhoto.svg";
 import { Tooltip } from "ComponentsRoot";
 
-
 const UserCard = ({ user }) => {
   return (
     <article className="userCard">

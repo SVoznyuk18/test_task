@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 
 export const ClassicButton = ({ children, style, type, onClick, disabled }) => {
@@ -24,4 +24,4 @@ ClassicButton.defaultProps = {
   disabled: false
 };
 
-export default ClassicButton;
+export default memo(ClassicButton);

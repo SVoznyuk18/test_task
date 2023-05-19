@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 
 const HelperMessage = ({ helperText, error }) => {
@@ -12,15 +12,13 @@ const HelperMessage = ({ helperText, error }) => {
 };
 
 HelperMessage.propTypes = {
-  style: PropTypes.object,
   helperText: PropTypes.string,
   error: PropTypes.string,
 };
 
 HelperMessage.defaultProps = {
-  style: {},
   helperText: "",
   error: "",
 };
 
-export default HelperMessage;
+export default memo(HelperMessage);
