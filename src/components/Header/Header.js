@@ -1,7 +1,6 @@
 import React from "react";
 
 import logo from "AssetsRoot/svg/logo.svg";
-
 import { ClassicButton } from "ComponentsRoot";
 
 const Header = () => {

@@ -5,9 +5,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: $bgColor;
-
+    
     &__title {
+        width: 320px;
         text-align: center;
         font-weight: 400;
         font-size: 40px;
@@ -26,11 +26,13 @@
 @media screen and (min-width: $tablet) {
     .users {
         padding: 140px 32px 0px;
+        &__title {
+            width: auto;
+        }
         &__list {
             grid-template-columns: repeat(2, minmax(282px ,344px));
             gap: 16px;
         }
-     
     }
 }
 

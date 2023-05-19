@@ -37,6 +37,7 @@
         line-height: 26px;
         border: 1px solid $inputBorder;
         border-radius: 4px;
+        background-color: $bgColor;
 
         &:focus+.label {
             transition: all 0.3s;

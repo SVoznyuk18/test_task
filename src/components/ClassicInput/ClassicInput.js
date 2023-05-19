@@ -1,4 +1,4 @@
-import React, {memo, useState} from "react";
+import React, {memo} from "react";
 import PropTypes from "prop-types";
 
 import { HelperMessage } from "ComponentsRoot";
@@ -12,13 +12,14 @@ const ClassicInput = ({
   register,
   helperText,
   errorMessage,
-  getValues
+  getValues,
+  style
 }) => {
 
   const value = getValues(name);
   
   return (
-    <div className="input_wrapper">
+    <div className="input_wrapper" style={style}>
       <input
         className={`input ${errorMessage && 'input_error'}`}
         type={type}
@@ -39,11 +40,12 @@ ClassicInput.propTypes = {
   htmlFor: PropTypes.string,
   id: PropTypes.string,
   name: PropTypes.string,
-  typr: PropTypes.string,
+  type: PropTypes.string,
   register: PropTypes.func,
   helperText: PropTypes.string,
   errorMessage: PropTypes.string,
-  getValues: PropTypes.func
+  getValues: PropTypes.func,
+  style: PropTypes.object,
 };
 
 ClassicInput.defaultProps = {
@@ -55,7 +57,8 @@ ClassicInput.defaultProps = {
   register: () => {},
   helperText: "",
   errorMessage: "",
-  getValues: () => {}
+  getValues: () => {},
+  style: {}
 };
 
 export default memo(ClassicInput);

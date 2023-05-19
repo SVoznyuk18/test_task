@@ -3,12 +3,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 13px 16px;
+    padding: 13px 5px;
 
     &__logo {
         width: 91px;
         height: 26px;
-        margin-right: 14px;
     }
 
     &__buttonsSection {
@@ -20,18 +19,26 @@
 
 @media screen and (min-width: $mobile) {
     .header {
-        padding: 13px 32px;
+        padding: 13px 16px;
     }
-    
 }
+
 @media screen and (min-width: $tablet) {
     .header {
-        padding: 13px 60px;
+        padding: 13px 32px;
+        &__logo {
+            margin-right: 14px;
+        }
     }
-    
 }
 
 @media screen and (min-width: $desktop) {
+    .header {
+        padding: 13px 60px;
+    }
+}
+
+@media screen and (min-width: $desktopL) {
     .header {
         max-width: 1170px;
         padding: 13px 0px;

@@ -12,13 +12,13 @@ const UserCard = ({ user }) => {
       <div className="userCard__name">
         <Tooltip text={user?.name}>{user?.name}</Tooltip>
       </div>
-      <div className="userCard__name">
+      <div className="userCard__position">
         <Tooltip text={user?.position}>{user?.position}</Tooltip>
       </div>
-      <div className="userCard__name">
+      <div className="userCard__email">
         <Tooltip text={user?.email}>{user?.email}</Tooltip>
       </div>
-      <div className="userCard__name">
+      <div className="userCard__phone">
         <Tooltip text={user?.phone}>{user?.phone}</Tooltip>
       </div>
     </article>

@@ -26,16 +26,18 @@ function App() {
   return (
     <>
       <Header />
-      <Promo />
-      <Users />
-      <Choose>
-        <When condition={user?.success}>
-        <Success/>
-        </When>
-        <Otherwise>
-        <Form />
-        </Otherwise>
-      </Choose>
+      <div className="container">
+        <Promo />
+        <Users />
+        <Choose>
+          <When condition={user?.success}>
+          <Success/>
+          </When>
+          <Otherwise>
+          <Form />
+          </Otherwise>
+        </Choose>
+      </div>
     </>
   );
 }

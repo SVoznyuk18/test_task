@@ -101,6 +101,7 @@ const Form = () => {
               helperText="+38 (XXX) XXX - XX - XX"
               errorMessage={errors?.phone && errors?.phone?.message}
               getValues={getValues}
+              style={{marginBottom: '43px'}}
             />
             <RadioButton
               title="Select your position"
@@ -125,7 +126,13 @@ const Form = () => {
               choseFile={choseFile}
               cbChoseFile={setChoseFile}
             />
-            <ClassicButton type="submit" disabled={Object.keys(errors).length > 0}>Sign up</ClassicButton>
+            <ClassicButton 
+              type="submit" 
+              style={{ width: "100px" }} 
+              disabled={Object.keys(errors).length > 0}
+            >
+              Sign up
+            </ClassicButton>
           </form>
         </Otherwise>
       </Choose>

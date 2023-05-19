@@ -2,7 +2,7 @@ import React from "react";
 
 import { ClassicButton } from "ComponentsRoot";
 
-const Promo = ({}) => {
+const Promo = () => {
   return (
     <section className="promo">
       <h1 className="promo__title">Test assignment for front-end developer</h1>
