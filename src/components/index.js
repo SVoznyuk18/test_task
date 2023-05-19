@@ -10,6 +10,7 @@ import Users from "./Users/Users";
 import Form from "./Form/Form";
 import HelperMessage from './HelperMessage/HelperMessage';
 import Success from './Success/Success';
+import Spiner from './Spiner/Spiner';
 
 export {
   ClassicButton,
@@ -23,5 +24,6 @@ export {
   Users,
   Form,
   HelperMessage,
-  Success
+  Success,
+  Spiner
 };

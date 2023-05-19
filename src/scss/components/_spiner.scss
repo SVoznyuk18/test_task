@@ -1,0 +1,11 @@
+.spiner{
+    width: 48px;
+    height: 48px;
+    display: inline;
+    transform-origin:center;
+    animation:spinner_svv2 .75s infinite linear;
+}
+
+@keyframes spinner_svv2 {
+    100%{transform:rotate(360deg)}
+};

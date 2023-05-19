@@ -7,7 +7,8 @@ import {
   Promo,
   Users,
   Form,
-  Success
+  Success,
+  Spiner
 } from "ComponentsRoot";
 
 import {getPositions, getUsers, getToken} from "ActionsRoot";
@@ -31,6 +32,7 @@ function App() {
       {
         user?.success ? <Success/> : <Form />
       }
+      <Spiner/>
     </>
   );
 }
