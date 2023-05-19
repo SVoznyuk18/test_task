@@ -3,6 +3,7 @@ import * as Types from "ConfigsRoot/constants";
 const initialState = {
   users: [],
   totalPages: 0,
+  user: {}
 };
 
 const getUsersSucces = (state, action) => {
@@ -26,12 +27,23 @@ const getOffsetUsersSuccess = (state, action) => {
   }
 }
 
+const createNewUserSuccess = (state, action) => {
+  const user = action.payload;
+
+  return {
+    ...state,
+    user
+  }
+}
+
 const users = (state = initialState, action) => {
   switch (action.type) {
     case Types.GET_USERS_SUCCESS:
       return getUsersSucces(state, action)
     case Types.GET_OFFSET_USERS_SUCCESS:
       return getOffsetUsersSuccess(state, action)
+    case Types.CREATE_NEW_USER_SUCCESS:
+      return createNewUserSuccess(state, action);
     default:
       return state;
   }

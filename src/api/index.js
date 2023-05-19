@@ -7,5 +7,5 @@ export {
   getTokenApiRequest,
   getUsersApiRequest,
   createNewUserApiRequest,
-  getOffsetUsersApiRequest
+  getOffsetUsersApiRequest,
 };

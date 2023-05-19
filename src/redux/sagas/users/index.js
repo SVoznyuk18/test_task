@@ -1,8 +1,10 @@
-import { put, call, takeLatest } from "redux-saga/effects";
+import { put, call, takeLatest, select } from "redux-saga/effects";
 
 import * as Types from "ConfigsRoot/constants";
 
-import {getUsersApiRequest, getOffsetUsersApiRequest} from 'ApiRoot'
+import {getUsersApiRequest, getOffsetUsersApiRequest, createNewUserApiRequest, test} from 'ApiRoot'
+
+const getToken = state => state.token.token;
 
 function* workGetUsers() {
     try{
@@ -26,8 +28,20 @@ function* workGetOffsetUsers(action) {
     }
 }
 
+function* workCreateNewUser(action) {
+    try{
+        const token = yield select(getToken);
+        const formData = action.payload;
+
+        const user = yield call(createNewUserApiRequest, formData, token);
+        yield put({type: Types.CREATE_NEW_USER_SUCCESS, payload: {user: user.data}});
+    } catch{
+        console.log('error workCreateNewUser');
+    }
+}
+
 export default function* watchUsers() {
     yield takeLatest(Types.GET_USERS, workGetUsers);
     yield takeLatest(Types.GET_OFFSET_USERS, workGetOffsetUsers);
-
+    yield takeLatest(Types.CREATE_NEW_USER, workCreateNewUser);
 }

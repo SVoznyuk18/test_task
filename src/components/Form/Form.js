@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useForm } from "react-hook-form";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 
@@ -10,6 +10,7 @@ import {
   FileUploader,
   RadioButton,
 } from "ComponentsRoot";
+import {createNewUser} from 'ActionsRoot'
 
 import {regExpEmail, regExpPhone} from "UtilsRoot";
 
@@ -18,8 +19,11 @@ const Form = () => {
   const [imgHeight, setImgHeight] = useState(0);
   const [choseFile, setChoseFile] = useState(null);
 
+  const {positions} = useSelector(state => state.positions);
+  const dispatch = useDispatch();
+
   const schema = yup.object({
-    yourName: yup.string()
+    name: yup.string()
               .required('Required field')
               .min(2, 'Must be more than 2 characters')
               .max(60, 'Must be less than 60 characters'),
@@ -39,8 +43,6 @@ const Form = () => {
               .test('isValid size', 'The photo size must not be greater than 5 Mb', value => value && (value.size < 5242880))
   })
 
-  const {positions} = useSelector(state => state.positions);
-
   const {
     register,
     handleSubmit,
@@ -53,6 +55,7 @@ const Form = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(createNewUser(data));
     reset();
     setChoseFile(null);
   };
@@ -62,13 +65,13 @@ const Form = () => {
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <h1 className="form__title">Working with POST request</h1>
         <ClassicInput
-          htmlFor="yourName"
+          htmlFor="name"
           label="Your name"
-          id="Your name"
-          name="yourName"
+          id="name"
+          name="name"
           type="text"
           register={register}
-          errorMessage={errors?.yourName && errors?.yourName?.message}
+          errorMessage={errors?.name && errors?.name?.message}
           getValues={getValues}
         />
         <ClassicInput
@@ -97,9 +100,10 @@ const Form = () => {
           radioItems={positions}
           name="position_id"
           register={register}
+          setValue={setValue}
         />
         <FileUploader
-          accept="image/*, .jpeg, .jpg"
+          accept="image/jpg, image/jpeg"
           defaultImgSize={5 * 1024 * 1024}
           id="photo"
           name="photo"

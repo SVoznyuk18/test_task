@@ -1,7 +1,7 @@
 import React, {memo, useState} from "react";
 import PropTypes from "prop-types";
 
-const RadioButton = ({ title, radioItems, name, register }) => {
+const RadioButton = ({ title, radioItems, name, register, setValue }) => {
 
   const [radioValue, setRadioValue] = useState(1);
 
@@ -17,13 +17,16 @@ const RadioButton = ({ title, radioItems, name, register }) => {
              name={name}
              value={radioItem?.id}
              className="radio__group__item__input"
-            {...register(name, {value: +radioValue})}
+            {...register(name)}
             checked={radioValue === radioItem?.id}
            />
            <label
              htmlFor={radioItem?.id}
              className="radio__group__item__label"
-             onClick={() => setRadioValue(radioItem?.id)}
+             onClick={() => { 
+              setRadioValue(radioItem?.id); 
+              setValue(name,radioItem?.id);
+            }}
            >
             {radioItem?.name}
            </label>

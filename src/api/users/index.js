@@ -13,6 +13,9 @@ export const getOffsetUsersApiRequest = page => axios({
 export const createNewUserApiRequest = (params, token) => axios({
     method: 'POST',
     url: 'https://frontend-test-assignment-api.abz.agency/api/v1/users',
-    body: params,
-    headers: {Token: token}
+    data: params,
+    headers: {
+        "Content-Type": "multipart/form-data",
+        Token: token
+    }
 })
