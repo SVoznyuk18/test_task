@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ClassicButton, UserCard, Spiner } from "ComponentsRoot";
 import {getOffsetUsers} from "ActionsRoot";
 
-const Users = ({}) => {
+const Users = () => {
 
   const [page, setPage] = useState(1);
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@
         display: inline-block;
         cursor: pointer;
 
-        &:hover+tooltip__text {
+        &:hover + .tooltip__text {
             width: auto;
             height: auto;
             left: 50%;
@@ -21,9 +21,8 @@
     }
 
     &__text {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+        display: inline;
+        white-space: nowrap;
         width: 0;
         height: 0;
         padding: 3px 16px;
