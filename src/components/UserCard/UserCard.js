@@ -9,16 +9,16 @@ const UserCard = ({ user }) => {
     <article className="userCard">
       <img className="userCard__img"  src={user?.photo || defaultPhoto} alt='userImg' loading="lazy" />
       <Tooltip text={user?.name} style={{marginBottom: '20px'}}> 
-        <h3 className="userCard__name">{user?.name}</h3>
+        <p className="userCard__name">{user?.name}</p>
       </Tooltip>
       <Tooltip text={user?.position}> 
-        <h3 className="userCard__position">{user?.position}</h3>
+        <p className="userCard__position">{user?.position}</p>
       </Tooltip>
       <Tooltip text={user?.email}> 
-        <h3 className="userCard__email">{user?.email}</h3>
+        <p className="userCard__email">{user?.email}</p>
       </Tooltip>
       <Tooltip text={user?.phone}> 
-        <h3 className="userCard__phone">{user?.phone}</h3>
+        <p className="userCard__phone">{user?.phone}</p>
       </Tooltip>
     </article>
   );
