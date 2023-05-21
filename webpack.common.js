@@ -2,7 +2,9 @@ const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-const devMode = process.env.NODE_ENV !== "production";
+
+const mode = process.env.NODE_ENV || 'development';
+const devMode = mode === 'development';
 
 module.exports = {
   resolve: {
@@ -31,7 +33,7 @@ module.exports = {
       template: "./public/index.html",
       favicon: "./public/favicon.ico",
     }),
-    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" }),
+    new MiniCssExtractPlugin({ filename: "[name].[contenthash].css" })
   ],
   module: {
     rules: [
@@ -98,7 +100,7 @@ module.exports = {
                 interlaced: false,
               },
               webp: {
-                quality: 75,
+                quality: 50,
               },
             },
           },
