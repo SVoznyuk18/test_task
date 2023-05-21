@@ -69,7 +69,7 @@ const Form = () => {
         </When>
         <Otherwise>
           <form className="form" onSubmit={handleSubmit(onSubmit)}>
-            <h1 className="form__title">Working with POST request</h1>
+            <h2 className="form__title">Working with POST request</h2>
             <ClassicInput
               htmlFor="name"
               label="Your name"

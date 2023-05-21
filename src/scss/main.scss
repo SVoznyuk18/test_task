@@ -3,7 +3,19 @@
 @import './lib/normalize';
 @import './components/all';
 
+
 .container {
     background-color: $bgColor;
     margin: 0 auto;
+}
+h1, h2 {
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
 }

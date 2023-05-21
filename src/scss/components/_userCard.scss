@@ -17,16 +17,10 @@
 
     &__name, &__position, &__email, &__phone {
         width: 100%;
-        font-size: 16px;
-        line-height: 26px;
         color: $denceText;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         text-align: center;
-    }
-
-    &__name {
-        margin-bottom: 20px;
     }
 }

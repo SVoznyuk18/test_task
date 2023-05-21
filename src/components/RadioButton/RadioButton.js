@@ -7,7 +7,7 @@ const RadioButton = ({ title, radioItems, name, register, setValue }) => {
 
   return (
     <div className="radio">
-      <div className="radio__title">{title}</div>
+      <h3 className="radio__title">{title}</h3>
       <ul className="radio__group">
         {radioItems?.length > 0 && radioItems.map(radioItem => (
            <li key={radioItem?.id} className="radio__group__item">

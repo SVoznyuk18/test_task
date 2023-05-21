@@ -8,18 +8,18 @@ const UserCard = ({ user }) => {
   return (
     <article className="userCard">
       <img className="userCard__img"  src={user?.photo || defaultPhoto} alt='userImg' loading="lazy" />
-      <div className="userCard__name">
-        <Tooltip text={user?.name}>{user?.name}</Tooltip>
-      </div>
-      <div className="userCard__position">
-        <Tooltip text={user?.position}>{user?.position}</Tooltip>
-      </div>
-      <div className="userCard__email">
-        <Tooltip text={user?.email}>{user?.email}</Tooltip>
-      </div>
-      <div className="userCard__phone">
-        <Tooltip text={user?.phone}>{user?.phone}</Tooltip>
-      </div>
+      <Tooltip text={user?.name} style={{marginBottom: '20px'}}> 
+        <h3 className="userCard__name">{user?.name}</h3>
+      </Tooltip>
+      <Tooltip text={user?.position}> 
+        <h3 className="userCard__position">{user?.position}</h3>
+      </Tooltip>
+      <Tooltip text={user?.email}> 
+        <h3 className="userCard__email">{user?.email}</h3>
+      </Tooltip>
+      <Tooltip text={user?.phone}> 
+        <h3 className="userCard__phone">{user?.phone}</h3>
+      </Tooltip>
     </article>
   );
 };

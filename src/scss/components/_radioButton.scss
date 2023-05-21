@@ -4,8 +4,6 @@
     &__title {
         margin-bottom: 14px;
         color: $denceText;
-        font-size: 16px;
-        line-height: 26px;
     }
 
     &__group {
@@ -22,6 +20,9 @@
             position: relative;
             width: 173px;
             height: 20px;
+            &:last-child {
+                margin-bottom: 0px
+            }
 
             &__input {
                 position: absolute;

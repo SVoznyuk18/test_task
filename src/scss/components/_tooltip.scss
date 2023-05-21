@@ -2,13 +2,15 @@
     display: inline-block;
     position: relative;
     width: auto;
-    height: auto;
+    height: 26px;
 
     &__target {
         display: inline-block;
         cursor: pointer;
 
         &:hover + .tooltip__text {
+            display: inline;
+            z-index: 99999;
             width: auto;
             height: auto;
             left: 50%;
@@ -21,7 +23,7 @@
     }
 
     &__text {
-        display: inline;
+        display: none;
         white-space: nowrap;
         width: 0;
         height: 0;
