@@ -40,6 +40,7 @@ function* workCreateNewUser(action) {
         const user = yield call(createNewUserApiRequest, formData, token);
         yield put({type: Types.CREATE_NEW_USER_SUCCESS, payload: user.data});
         yield put({type: Types.CRATE_NEW_USER_LOADING, payload: false});
+        yield put({type: Types.GET_USERS});
     } catch{
         console.log('error workCreateNewUser');
     }
